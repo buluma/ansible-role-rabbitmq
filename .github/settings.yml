@@ -1,0 +1,8 @@
+---
+#
+# Ansible managed
+#
+repository:
+  description: RabbitMQ installation for Linux.
+  homepage: https://buluma.github.io/
+  topics: system, rabbitmq, queue, rabbit, ansible, molecule, tox, playbook, hacktoberfest

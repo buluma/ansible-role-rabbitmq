@@ -1,53 +1,109 @@
-# Ansible Role: RabbitMQ
+# [rabbitmq](#rabbitmq)
 
-[![CI](https://github.com/geerlingguy/ansible-role-rabbitmq/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-rabbitmq/actions?query=workflow%3ACI)
+RabbitMQ installation for Linux.
 
-Installs RabbitMQ on Linux.
+|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|---------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-rabbitmq/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-rabbitmq/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-rabbitmq/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-rabbitmq)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/buluma/rabbitmq)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/rabbitmq)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-rabbitmq.svg)](https://github.com/buluma/ansible-role-rabbitmq/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-rabbitmq.svg)](https://github.com/buluma/ansible-role-rabbitmq/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-rabbitmq.svg)](https://github.com/buluma/ansible-role-rabbitmq/pulls/)|
 
-## Requirements
+## [Example Playbook](#example-playbook)
 
-(Red Hat / CentOS only) Requires the EPEL repository, which can be installed with the `geerlingguy.repo-epel` role.
+This example is taken from `molecule/default/converge.yml` and is tested on each push, pull request and release.
+```yaml
+---
+- name: Converge
+  hosts: all
+  become: true
 
-## Role Variables
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=true cache_valid_time=600
+      when: ansible_os_family == 'Debian'
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+  roles:
+    - role: buluma.rabbitmq
+```
 
-    rabbitmq_daemon: rabbitmq-server
-    rabbitmq_state: started
-    rabbitmq_enabled: true
+The machine needs to be prepared. In CI this is done using `molecule/default/prepare.yml`:
+```yaml
+---
+- name: Prepare
+  hosts: all
+  gather_facts: no
+  become: yes
 
-Controls the RabbitMQ daemon's state and whether it starts at boot.
+  roles:
+    - role: buluma.bootstrap
+    - role: buluma.epel
+    - role: buluma.buildtools
+```
 
-    rabbitmq_version: "3.9.13"
 
-The RabbitMQ version to install.
+## [Role Variables](#role-variables)
 
-    rabbitmq_rpm: "rabbitmq-server-{{ rabbitmq_version }}-1.el{{ ansible_distribution_major_version }}.noarch.rpm"
-    rabbitmq_rpm_url: "https://packagecloud.io/rabbitmq/rabbitmq-server/packages/el/{{ ansible_distribution_major_version }}/{{ rabbitmq_rpm }}/download"
+The default values for the variables are set in `defaults/main.yml`:
+```yaml
+---
+rabbitmq_daemon: rabbitmq-server
+rabbitmq_state: started
+rabbitmq_enabled: true
 
-(RedHat/CentOS only) Controls the .rpm to install.
+rabbitmq_version: "3.9.13"
 
-    rabbitmq_deb: "rabbitmq-server_{{ rabbitmq_version }}-1_all.deb"
-    rabbitmq_deb_url: "https://packagecloud.io/rabbitmq/rabbitmq-server/packages/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/{{ rabbitmq_deb }}/download"
+rabbitmq_rpm: "rabbitmq-server-{{ rabbitmq_version }}-1.el{{ ansible_distribution_major_version }}.noarch.rpm"
+rabbitmq_rpm_url: "https://packagecloud.io/rabbitmq/rabbitmq-server/packages/el/{{ ansible_distribution_major_version }}/{{ rabbitmq_rpm }}/download"
 
-(Debian/Ubuntu only) Controls the .deb to install.
+rabbitmq_deb: "rabbitmq-server_{{ rabbitmq_version }}-1_all.deb"
+rabbitmq_deb_url: "https://packagecloud.io/rabbitmq/rabbitmq-server/packages/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/{{ rabbitmq_deb }}/download"
+```
 
-## Dependencies
+## [Requirements](#requirements)
 
-None.
+- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-rabbitmq/blob/main/requirements.txt).
 
-## Example Playbook
+## [Status of used roles](#status-of-requirements)
 
-    - hosts: rabbitmq
-      roles:
-        - name: geerlingguy.repo-epel
-          when: ansible_os_family == 'RedHat'
-        - geerlingguy.rabbitmq
+The following roles are used to prepare a system. You can prepare your system in another way.
 
-## License
+| Requirement | GitHub | GitLab |
+|-------------|--------|--------|
+|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-bootstrap)|
+|[buluma.buildtools](https://galaxy.ansible.com/buluma/buildtools)|[![Build Status GitHub](https://github.com/buluma/ansible-role-buildtools/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-buildtools/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-buildtools/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-buildtools)|
+|[buluma.epel](https://galaxy.ansible.com/buluma/epel)|[![Build Status GitHub](https://github.com/buluma/ansible-role-epel/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-epel/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-epel/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-epel)|
 
-MIT / BSD
+## [Context](#context)
 
-## Author Information
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.co.ke/) for further information.
 
-This role was created in 2017 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
+Here is an overview of related roles:
+
+![dependencies](https://raw.githubusercontent.com/buluma/ansible-role-rabbitmq/png/requirements.png "Dependencies")
+
+## [Compatibility](#compatibility)
+
+This role has been tested on these [container images](https://hub.docker.com/u/buluma):
+
+|container|tags|
+|---------|----|
+|el|all|
+|fedora|all|
+|debian|all|
+|ubuntu|all|
+
+The minimum version of Ansible required is 2.4, tests have been done to:
+
+- The previous version.
+- The current version.
+- The development version.
+
+
+
+If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-rabbitmq/issues)
+
+## [License](#license)
+
+Apache-2.0
+
+## [Author Information](#author-information)
+
+[Michael Buluma](https://buluma.github.io/)
