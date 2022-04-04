@@ -28,6 +28,8 @@ molecule:
         tag: "buster"
       - image: "ubuntu"
         tag: "buster"
+      - image: "debian"
+        tag: "buster"
 
 testing:
   script:
