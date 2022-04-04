@@ -4,7 +4,7 @@ RabbitMQ installation for Linux.
 
 |GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
 |------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-rabbitmq/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-rabbitmq/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-rabbitmq/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-rabbitmq)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/buluma/rabbitmq)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/rabbitmq)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-rabbitmq.svg)](https://github.com/buluma/ansible-role-rabbitmq/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-rabbitmq.svg)](https://github.com/buluma/ansible-role-rabbitmq/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-rabbitmq.svg)](https://github.com/buluma/ansible-role-rabbitmq/pulls/)|
+|[![github](https://github.com/buluma/ansible-role-rabbitmq/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-rabbitmq/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-rabbitmq/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-rabbitmq)|[![quality](https://img.shields.io/ansible/quality/58658)](https://galaxy.ansible.com/buluma/rabbitmq)|[![downloads](https://img.shields.io/ansible/role/d/58658)](https://galaxy.ansible.com/buluma/rabbitmq)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-rabbitmq.svg)](https://github.com/buluma/ansible-role-rabbitmq/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-rabbitmq.svg)](https://github.com/buluma/ansible-role-rabbitmq/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-rabbitmq.svg)](https://github.com/buluma/ansible-role-rabbitmq/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -33,9 +33,9 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
   become: yes
 
   roles:
-    - role: buluma.bootstrap
-    - role: buluma.epel
-    - role: buluma.buildtools
+  # - role: buluma.bootstrap
+  # - role: buluma.epel
+  # - role: buluma.buildtools
 ```
 
 
@@ -48,7 +48,7 @@ rabbitmq_daemon: rabbitmq-server
 rabbitmq_state: started
 rabbitmq_enabled: true
 
-rabbitmq_version: "3.9.13"
+rabbitmq_version: "3.8.15"
 
 rabbitmq_rpm: "rabbitmq-server-{{ rabbitmq_version }}-1.el{{ ansible_distribution_major_version }}.noarch.rpm"
 rabbitmq_rpm_url: "https://packagecloud.io/rabbitmq/rabbitmq-server/packages/el/{{ ansible_distribution_major_version }}/{{ rabbitmq_rpm }}/download"
