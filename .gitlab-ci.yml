@@ -31,7 +31,7 @@ molecule:
       - image: "ubuntu"
         tag: "bionic"
       - image: "debian"
-        tag: "sid"
+        tag: "11"
       - image: "debian"
         tag: "stretch"
       - image: "debian"
