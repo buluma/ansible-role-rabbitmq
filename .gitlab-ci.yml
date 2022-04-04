@@ -37,9 +37,9 @@ molecule:
       - image: "debian"
         tag: "buster"
       - image: "centos"
-        tag: "8"
+        tag: "centos8"
       - image: "centos"
-        tag: "7"
+        tag: "centos7"
 
 testing:
   script:
