@@ -11,3 +11,7 @@ exclude_paths:
   - ./molecule/default/collections.yml
   - ./.tox
   - ./.cache
+
+skip_list:
+  - no-changed-when
+  - risky-shell-pipe
