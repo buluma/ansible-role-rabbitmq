@@ -27,6 +27,8 @@ molecule:
       - image: "ubuntu"
         tag: "focal"
       - image: "ubuntu"
+        tag: "20.04"
+      - image: "ubuntu"
         tag: "bionic"
       - image: "debian"
         tag: "sid"
