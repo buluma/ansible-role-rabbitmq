@@ -1,4 +1,14 @@
 ---
+- name: Add Erlang YUM repository
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
+  args:
+    warn: no
+
+- name: yum-clean-metadata
+  command: yum clean metadata
+  args:
+    warn: no
+
 - name: Ensure erlang is installed.
   package:
     name: erlang
