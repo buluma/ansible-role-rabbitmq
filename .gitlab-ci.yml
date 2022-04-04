@@ -20,6 +20,14 @@ molecule:
         tag: "8"
       - image: "rockylinux8"
         tag: "latest"
+      - image: "ubuntu"
+        tag: "focal"
+      - image: "ubuntu"
+        tag: "bionic"
+      - image: "ubuntu"
+        tag: "buster"
+      - image: "ubuntu"
+        tag: "buster"
 
 testing:
   script:
