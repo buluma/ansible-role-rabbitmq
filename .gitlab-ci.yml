@@ -16,6 +16,10 @@ molecule:
     matrix:
       - image: "docker-rockylinux8-ansible"
         tag: "latest"
+      - image: "rockylinux"
+        tag: "8"
+      - image: "rockylinux8"
+        tag: "latest"
 
 testing:
   script:
