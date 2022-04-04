@@ -28,18 +28,16 @@ molecule:
         tag: "focal"
       - image: "ubuntu"
         tag: "bionic"
-      - image: "debian-systemd"
-        tag: "latest"
-      - image: "debian-systemd"
-        tag: "bookworm"
+      - image: "debian"
+        tag: "sid"
+      - image: "debian"
+        tag: "stretch"
       - image: "debian"
         tag: "jessie"
       - image: "debian"
         tag: "stretch"
-      - image: "docker-ubuntu-systemd"
+      - image: "ubuntu"
         tag: "bionic"
-      - image: "docker-ubuntu-systemd"
-        tag: "focal"
 
 testing:
   script:
