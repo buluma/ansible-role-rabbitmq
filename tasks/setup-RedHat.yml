@@ -1,18 +1,18 @@
 ---
-- name: Add Erlang YUM repository
-  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
-  args:
-    warn: no
-
-- name: Import primary RabbitMQ signing key
-  ansible.builtin.rpm_key:
-    state: present
-    key: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-
-- name: yum-clean-metadata
-  command: yum clean metadata
-  args:
-    warn: no
+# - name: Add Erlang YUM repository
+#   ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
+#   args:
+#     warn: no
+#
+# - name: Import primary RabbitMQ signing key
+#   ansible.builtin.rpm_key:
+#     state: present
+#     key: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+#
+# - name: yum-clean-metadata
+#   command: yum clean metadata
+#   args:
+#     warn: no
 
 - name: Ensure erlang is installed.
   ansible.builtin.package:
