@@ -14,32 +14,8 @@ molecule:
   retry: 1
   parallel:
     matrix:
-      - image: "enterpriselinux"
-        tag: "7"
-      - image: "enterpriselinux"
+      - image: "docker-rockylinux8-ansible"
         tag: "latest"
-      - image: "centos"
-        tag: "6"
-      - image: "centos"
-        tag: "7"
-      - image: "docker-centos7-ansible"
-        tag: "latest"
-      - image: "ubuntu"
-        tag: "focal"
-      - image: "ubuntu"
-        tag: "20.04"
-      - image: "ubuntu"
-        tag: "bionic"
-      - image: "debian"
-        tag: "11"
-      - image: "debian"
-        tag: "stretch"
-      - image: "debian"
-        tag: "jessie"
-      - image: "debian"
-        tag: "stretch"
-      - image: "ubuntu"
-        tag: "bionic"
 
 testing:
   script:
