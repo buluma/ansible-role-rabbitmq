@@ -4,27 +4,32 @@
   args:
     warn: no
 
+- name: Import primary RabbitMQ signing key
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+
 - name: yum-clean-metadata
   command: yum clean metadata
   args:
     warn: no
 
 - name: Ensure erlang is installed.
-  package:
+  ansible.builtin.package:
     name: erlang
     state: present
 
 - name: Add packagecloud GPG key.
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: "https://packagecloud.io/gpg.key"
     state: present
 
 - name: Download RabbitMQ package.
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ rabbitmq_rpm_url }}"
     dest: "/tmp/{{ rabbitmq_rpm }}"
 
 - name: Ensure RabbitMQ is installed.
-  yum:
+  ansible.builtin.yum:
     name: "/tmp/{{ rabbitmq_rpm }}"
     state: "present"
