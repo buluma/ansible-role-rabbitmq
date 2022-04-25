@@ -11,14 +11,14 @@
     name: "{{ rabbitmq_daemon }}"
     state: "{{ rabbitmq_state }}"
     enabled: "{{ rabbitmq_enabled }}"
-  async: 1000
-  poll: 0
-  register: rabbitmq_sleeper
-
-- name: Check on async rabbitmq status
-  async_status:
-    jid: "{{ rabbitmq_sleeper.ansible_job_id }}"
-  register: job_result
-  until: job_result.finished
-  retries: 100
-  delay: 10
+#   async: 1000
+#   poll: 0
+#   register: rabbitmq_sleeper
+#
+# - name: Check on async rabbitmq status
+#   async_status:
+#     jid: "{{ rabbitmq_sleeper.ansible_job_id }}"
+#   register: job_result
+#   until: job_result.finished
+#   retries: 100
+#   delay: 10
