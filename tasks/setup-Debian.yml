@@ -26,4 +26,3 @@
   ansible.builtin.apt:
     deb: "/tmp/{{ rabbitmq_deb }}"
     state: present
-    mode: 0755
