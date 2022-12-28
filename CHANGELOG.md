@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump actions/setup-python from 3.1.2 to 4.4.0 [\#15](https://github.com/buluma/ansible-role-rabbitmq/pull/15) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump buluma/galaxy-action from 1.0.3 to 6.25.22 [\#8](https://github.com/buluma/ansible-role-rabbitmq/pull/8) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump actions/setup-python from 3.1.1 to 3.1.2 [\#4](https://github.com/buluma/ansible-role-rabbitmq/pull/4) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump actions/setup-python from 2 to 3.1.1 [\#3](https://github.com/buluma/ansible-role-rabbitmq/pull/3) ([dependabot[bot]](https://github.com/apps/dependabot))
