@@ -1,4 +1,4 @@
-# [rabbitmq](#rabbitmq)
+# [Ansible role rabbitmq](#rabbitmq)
 
 RabbitMQ installation for Linux.
 
