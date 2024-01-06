@@ -14,23 +14,23 @@
 #   args:
 #     warn: no
 
-- name: Ensure erlang is installed.
+- name: setup-RedHat | Ensure erlang is installed.
   ansible.builtin.package:
     name: erlang
     state: present
 
-- name: Add packagecloud GPG key.
+- name: setup-RedHat | Add packagecloud GPG key.
   ansible.builtin.rpm_key:
     key: "https://packagecloud.io/gpg.key"
     state: present
 
-- name: Download RabbitMQ package.
+- name: setup-RedHat | Download RabbitMQ package.
   ansible.builtin.get_url:
     url: "{{ rabbitmq_rpm_url }}"
     dest: "/tmp/{{ rabbitmq_rpm }}"
     mode: 0755
 
-- name: Ensure RabbitMQ is installed.
+- name: setup-RedHat | Ensure RabbitMQ is installed.
   ansible.builtin.yum:
     name: "/tmp/{{ rabbitmq_rpm }}"
     state: "present"

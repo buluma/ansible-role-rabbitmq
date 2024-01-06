@@ -5,6 +5,6 @@
   become: yes
 
   roles:
-  # - role: buluma.bootstrap
+  - role: buluma.bootstrap
   # - role: buluma.epel
   # - role: buluma.buildtools

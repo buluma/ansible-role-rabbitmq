@@ -1,9 +1,10 @@
 ---
 # Setup/install tasks.
-- include_tasks: setup-RedHat.yml
+- ansible.builtin.import_tasks: setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
 
-- include_tasks: setup-Debian.yml
+- name: Setup Debian
+  ansible.builtin.import_tasks: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
 - name: Ensure rabbitmq is started and enabled (if configured).
